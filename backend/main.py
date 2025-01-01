@@ -31,12 +31,13 @@ async def detect_plagiarism(file1: UploadFile = File(...), file2: UploadFile = F
         suspected_code_preprocessed = preprocess_code(code2)
 
         cosine_sim = calculate_cosine_similarity(original_code_preprocessed, suspected_code_preprocessed)
+        cosine_sim = round(cosine_sim, 4) * 100
         threshold = 0.8
 
         if cosine_sim > threshold:
-            result = f"Plagiarisme Terdeteksi"
+            result = "Terdeteksi Plagiarisme"
         else:
-            result = "Kode Kemungkinan Tidak Plagiarisme."
+            result = "Tidak Terdeteksi Plagiarisme."
         
         return {"cosine_similarity": cosine_sim, "result": result}
     except Exception as e:
