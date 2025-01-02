@@ -42,7 +42,7 @@ export default function DetectPlagiarism() {
       }
 
       const data = await res.json();
-      setCosineSimilarity(data.cosine_similarity);
+      setCosineSimilarity(data.cosine_similarity_percentage);
       setResult(data.result);
     } catch (error) {
       console.error("Error:", error);
@@ -93,7 +93,7 @@ export default function DetectPlagiarism() {
       {cosineSimilarity !== null && (
         <div className="flex flex-col rounded-2xl justify-center items-center w-1/3 p-8 bg-gray-800/90 card shadow-xl">
           <h2 className="text-xl font-semibold mb-5">Hasil Deteksi Plagiarisme</h2>
-          <div className="flex justify-around items-center w-2/3">
+          <div className="flex justify-around items-center w-full">
             <div className="">
               <p>Cosine Similarity</p>
               <p>Hasil</p>
